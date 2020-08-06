@@ -10,6 +10,7 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Laravel\Lumen\Auth\Authorizable;
 
@@ -38,6 +39,8 @@ use Laravel\Lumen\Auth\Authorizable;
  * @property Carbon|null $visited_at
  * @method static Builder|User whereNotificationsAreEnabled($value)
  * @method static Builder|User whereVisitedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Card[] $cards
+ * @property-read int|null $cards_count
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
@@ -68,6 +71,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $dispatchesEvents = [
         'created' => UserCreated::class
     ];
+
+    public function cards(): HasMany
+    {
+        return $this->hasMany(Card::class);
+    }
 
     /**
      * @param int $vkId

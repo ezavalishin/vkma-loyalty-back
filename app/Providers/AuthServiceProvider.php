@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Card;
+use App\Group;
 use App\Guards\VkAppGuard;
-use App\User;
+use App\Policies\CardPolicy;
+use App\Policies\GroupPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -32,5 +35,8 @@ class AuthServiceProvider extends ServiceProvider
         // the User instance via an API token or any other method necessary.
 
         $this->app['auth']->viaRequest('api', new VkAppGuard());
+
+        Gate::policy(Group::class, GroupPolicy::class);
+        Gate::policy(Card::class, CardPolicy::class);
     }
 }

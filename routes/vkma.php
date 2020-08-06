@@ -13,4 +13,27 @@
 |
 */
 
-$router->get('/me', 'UserController@me');
+$router->get('/colors', 'ColorController@index');
+$router->get('/categories', 'CategoryController@index');
+
+$router->group([
+    'prefix' => 'me'
+], static function () use ($router) {
+    $router->get('/', 'UserController@me');
+    $router->get('/cards', 'UserController@indexCards');
+});
+
+$router->group([
+    'prefix' => 'groups'
+], static function () use ($router) {
+    $router->post('/', 'GroupController@store');
+    $router->post('/{id:[0-9]+}/goals', 'GroupController@storeGoal');
+    $router->get('/{id:[0-9]+}/goals', 'GroupController@indexGoals');
+    $router->get('/{id:[0-9]+}/cards', 'GroupController@indexCardsForUser');
+});
+
+$router->group([
+    'prefix' => 'cards'
+], static function () use ($router) {
+    $router->post('/{id:[0-9]+}/checkin', 'CardController@checkin');
+});

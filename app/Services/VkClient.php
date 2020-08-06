@@ -47,6 +47,14 @@ class VkClient
         return $isFew ? $response : $response[0];
     }
 
+    public function getGroup(int $id, array $fields)
+    {
+        return $this->client->groups()->getById($this->accessToken, [
+            'group_id' => $id,
+            'fields' => $fields,
+        ])[0];
+    }
+
     public function getFriends($userId, $fields): array
     {
         try {
