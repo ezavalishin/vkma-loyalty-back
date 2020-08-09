@@ -47,12 +47,17 @@ class VkClient
         return $isFew ? $response : $response[0];
     }
 
-    public function getGroup(int $id, array $fields)
+    public function getGroupById(int $id, array $fields)
     {
         return $this->client->groups()->getById($this->accessToken, [
             'group_id' => $id,
             'fields' => $fields,
         ])[0];
+    }
+
+    public function getAuthGroup()
+    {
+        return $this->client->groups()->getById($this->accessToken, [])[0];
     }
 
     public function getFriends($userId, $fields): array
@@ -68,5 +73,10 @@ class VkClient
         }
 
         return $users;
+    }
+
+    public function getGroupTokenPermissions() : ?array
+    {
+        return $this->client->groups()->getTokenPermissions($this->accessToken)['permissions'] ?? null;
     }
 }

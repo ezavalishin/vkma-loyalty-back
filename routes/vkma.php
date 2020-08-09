@@ -21,15 +21,22 @@ $router->group([
 ], static function () use ($router) {
     $router->get('/', 'UserController@me');
     $router->get('/cards', 'UserController@indexCards');
+    $router->get('/groups', 'UserController@indexGroups');
 });
 
 $router->group([
     'prefix' => 'groups'
 ], static function () use ($router) {
     $router->post('/', 'GroupController@store');
+
     $router->post('/{id:[0-9]+}/goals', 'GroupController@storeGoal');
     $router->get('/{id:[0-9]+}/goals', 'GroupController@indexGoals');
+
     $router->get('/{id:[0-9]+}/cards', 'GroupController@indexCardsForUser');
+
+    $router->post('/{id:[0-9]+}/cashiers', 'GroupController@storeCashier');
+    $router->get('/{id:[0-9]+}/cashiers', 'GroupController@indexCashiers');
+    $router->delete('/{id:[0-9]+}/cashiers', 'GroupController@detachCashier');
 });
 
 $router->group([

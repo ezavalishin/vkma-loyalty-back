@@ -4,6 +4,7 @@ namespace App\Http\Controllers\VKMA;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CardResource;
+use App\Http\Resources\GroupResource;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Auth;
@@ -39,5 +40,18 @@ class UserController extends Controller
             ->get();
 
         return CardResource::collection($cards);
+    }
+
+    public function indexGroups(): AnonymousResourceCollection
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            abort(401);
+        }
+
+        $groups = $user->groupsAsOwner()->get();
+
+        return GroupResource::collection($groups);
     }
 }

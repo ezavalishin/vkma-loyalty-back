@@ -152,4 +152,9 @@ class Card extends Model
         }
         return $this->goal->color;
     }
+
+    public function getDescription(): string
+    {
+        return $this->goal->description;
+    }
 }

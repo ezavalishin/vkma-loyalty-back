@@ -23,7 +23,7 @@ class CreateGroupsTable extends Migration
             $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->on('cities')->references('id')->onDelete('cascade');
 
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->on('categories')->references('id')->onDelete('cascade');
 
             $table->string('avatar')->nullable();

@@ -9,7 +9,9 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 use Laravel\Lumen\Auth\Authorizable;
@@ -39,7 +41,7 @@ use Laravel\Lumen\Auth\Authorizable;
  * @property Carbon|null $visited_at
  * @method static Builder|User whereNotificationsAreEnabled($value)
  * @method static Builder|User whereVisitedAt($value)
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Card[] $cards
+ * @property-read Collection|Card[] $cards
  * @property-read int|null $cards_count
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
@@ -75,6 +77,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function cards(): HasMany
     {
         return $this->hasMany(Card::class);
+    }
+
+    public function groupsAsOwner(): BelongsToMany
+    {
+        return $this->belongsToMany(Group::class, 'owners');
     }
 
     /**

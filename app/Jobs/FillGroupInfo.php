@@ -38,7 +38,7 @@ class FillGroupInfo extends Job
         $this->throttle(function () {
             $group = $this->group;
 
-            $data = (new VkClient())->getGroup($group->vk_group_id, [
+            $data = (new VkClient())->getGroupById($group->vk_group_id, [
                 'name',
                 'photo_200',
                 'city'

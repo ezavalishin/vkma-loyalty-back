@@ -8,8 +8,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CardResource;
 use App\Http\Resources\GoalResource;
 use App\Http\Resources\GroupResource;
+use App\Http\Resources\UserResource;
+use App\Services\VkClient;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -39,11 +43,15 @@ class GroupController extends Controller
         }
 
         $this->validate($request, [
-            'category_id' => 'required|integer|exists:categories,id'
+            'category_id' => 'nullable|integer|exists:categories,id',
+            'access_token' => 'required|string'
         ]);
 
-        $vkGroupId = 1;
+        $accessToken = $request->input('access_token');
 
+        $group = (new VkClient($accessToken))->getAuthGroup();
+
+        $vkGroupId = $group['id'];
 
         /** @var Group $group */
         $group = Group::query()->firstOrCreate([
@@ -68,7 +76,8 @@ class GroupController extends Controller
         $this->validate($request, [
             'color_id' => 'required|integer|exists:colors,id',
             'checkins_count' => 'required|integer|min:1|max:999',
-            'description' => 'required|string|max:255'
+            'description' => 'required|string|max:255',
+            'category_id' => 'nullable|integer|exists:categories,id'
         ]);
 
         $user = Auth::user();
@@ -83,15 +92,19 @@ class GroupController extends Controller
             abort(403);
         }
 
-        if ($group->goals()->count() > 0) {
-            abort(422, 'limit of goals');
-        }
+//        if ($group->goals()->count() > 0) {
+//            abort(422, 'limit of goals');
+//        }
 
         $goal = $group->goals()->create([
             'color_id' => $request->input('color_id'),
             'checkins_count' => $request->input('checkins_count'),
             'description' => $request->input('description')
         ]);
+
+        // todo shit
+        $group->category_id = $request->input('category_id');
+        $group->save();
 
         return new GoalResource($goal);
     }
@@ -142,5 +155,72 @@ class GroupController extends Controller
         $cards->load(['goal.group', 'goal.color']);
 
         return CardResource::collection($cards);
+    }
+
+    public function storeCashier(int $id, Request $request): UserResource
+    {
+        $this->validate($request, [
+            'vk_user_id' => 'required|integer',
+        ]);
+
+        $user = Auth::user();
+
+        if (!$user) {
+            abort(401);
+        }
+
+        $group = Group::query()->findOrFail($id);
+
+        if ($user->cannot('update', $group)) {
+            abort(403);
+        }
+
+        $cashier = User::byVkId($request->input('vk_user_id'));
+
+        $group->addCashier($cashier);
+
+        return new UserResource($cashier);
+    }
+
+    public function indexCashiers(int $id, Request $request): AnonymousResourceCollection
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            abort(401);
+        }
+
+        $group = Group::query()->findOrFail($id);
+
+        if ($user->cannot('update', $group)) {
+            abort(403);
+        }
+
+        $cashiers = $group->cashiers()->get();
+
+        return UserResource::collection($cashiers);
+    }
+
+    public function detachCashier(int $id, Request $request): Response
+    {
+        $this->validate($request, [
+            'user_id' => 'required|integer'
+        ]);
+
+        $user = Auth::user();
+
+        if (!$user) {
+            abort(401);
+        }
+
+        $group = Group::query()->findOrFail($id);
+
+        if ($user->cannot('update', $group)) {
+            abort(403);
+        }
+
+        $group->cashiers()->detach($request->input('user_id'));
+
+        return new Response(null, 204);
     }
 }

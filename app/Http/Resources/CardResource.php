@@ -20,6 +20,7 @@ class CardResource extends JsonResource
             'hash' => $this->getCheckinHash(),
             'total_count' => $this->getTotalCheckinCount(),
             'approved_count' => $this->getApprovedCheckinCount(),
+            'description' => $this->getDescription(),
             'group' => new GroupResource($this->getGroup() ?? new MissingValue()),
             'color' => new ColorResource($this->getColor() ?? new MissingValue())
         ];
