@@ -85,7 +85,7 @@ class VkAppGuard
 
     private function checkSign($params): void
     {
-        if (app()->environment() === 'local') {
+        if (app()->environment() !== 'production') {
             return;
         }
 
