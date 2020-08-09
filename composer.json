@@ -11,6 +11,7 @@
         "illuminate/redis": "^7.23",
         "laravel/lumen-framework": "^7.0",
         "league/flysystem": "^1.0",
+        "lorisleiva/laravel-deployer": "^0.3.2",
         "vkcom/vk-php-sdk": "^5.101"
     },
     "require-dev": {

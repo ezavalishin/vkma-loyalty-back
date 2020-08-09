@@ -5,6 +5,7 @@ namespace App\Providers;
 use Fruitcake\Cors\CorsServiceProvider;
 use Illuminate\Redis\RedisServiceProvider;
 use Illuminate\Support\ServiceProvider;
+use Lorisleiva\LaravelDeployer\LaravelDeployerServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,11 +16,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() !== 'production') {
+        if ($this->app->environment() === 'local') {
             $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
         }
 
         $this->app->register(RedisServiceProvider::class);
         $this->app->register(CorsServiceProvider::class);
+
+        $this->app->register(LaravelDeployerServiceProvider::class);
     }
 }
