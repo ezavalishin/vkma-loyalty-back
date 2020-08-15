@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\VKMA;
 
 use App\Card;
+use App\Goal;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CardResource;
 use App\Http\Resources\GoalResource;

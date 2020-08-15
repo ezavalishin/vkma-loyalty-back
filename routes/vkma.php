@@ -40,6 +40,14 @@ $router->group([
 });
 
 $router->group([
+    'prefix' => 'goals'
+], static function () use ($router) {
+    $router->get('/', 'GoalController@index');
+    $router->put('/{id:[0-9]+}', 'GoalController@update');
+    $router->delete('/{id:[0-9]+}', 'GoalController@destroy');
+});
+
+$router->group([
     'prefix' => 'cards'
 ], static function () use ($router) {
     $router->post('/{id:[0-9]+}/checkin', 'CardController@checkin');
