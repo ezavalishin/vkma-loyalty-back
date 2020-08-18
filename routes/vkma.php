@@ -45,10 +45,13 @@ $router->group([
     $router->get('/', 'GoalController@index');
     $router->put('/{id:[0-9]+}', 'GoalController@update');
     $router->delete('/{id:[0-9]+}', 'GoalController@destroy');
+
+    $router->post('/{id:[0-9]+}/attach', 'GoalController@attach');
 });
 
 $router->group([
     'prefix' => 'cards'
 ], static function () use ($router) {
     $router->post('/{id:[0-9]+}/checkin', 'CardController@checkin');
+    $router->delete('/{id:[0-9]+}', 'CardController@destroy');
 });

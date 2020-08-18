@@ -10,6 +10,7 @@ use App\Http\Resources\GoalResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use SwooleTW\Http\Websocket\Facades\Websocket;
 
 class CardController extends Controller
 {
@@ -51,6 +52,26 @@ class CardController extends Controller
 
         $card->refresh();
 
+        Websocket::broadcast()->to($card->getWsRoomKey())->emit('card-checkined', (new CardResource($card))->resolve());
+
         return new CardResource($card);
+    }
+
+    public function destroy(int $id) {
+        $user = Auth::user();
+
+        if (!$user) {
+            abort(401);
+        }
+
+        $card = Card::query()->findOrFail($id);
+
+        if ($user->cannot('update', $card)) {
+            abort(403);
+        }
+
+        $card->delete();
+
+        return response(null, 204);
     }
 }

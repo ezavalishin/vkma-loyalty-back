@@ -6,6 +6,7 @@ use App\Color;
 use App\Goal;
 use App\User;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\MissingValue;
 
 /**
  * Class GoalResource
@@ -18,7 +19,9 @@ class GoalResource extends JsonResource {
         return [
             'id' => $this->id,
             'description' => $this->description,
-            'checkins_count' => $this->checkins_count
+            'checkins_count' => $this->checkins_count,
+            'group' => new GroupResource($this->whenLoaded('group')),
+            'is_attached' => $this->getAttribute('is_attached')
         ];
     }
 }

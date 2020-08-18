@@ -342,16 +342,12 @@
 						{
 							"key": "category_id",
 							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "vk_group_id",
-							"value": "1",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "access_token",
-							"value": "token",
+							"value": "f6c329aa18cb96edd88e0d4620d3acc3f980c628c09a3e47f14e1673ef6ca4be071a58e4176ffa3d9a19a",
 							"type": "text"
 						}
 					]
@@ -486,12 +482,12 @@
 					"urlencoded": [
 						{
 							"key": "color_id",
-							"value": "1",
+							"value": "2",
 							"type": "text"
 						},
 						{
 							"key": "checkins_count",
-							"value": "2",
+							"value": "10",
 							"type": "text"
 						},
 						{
@@ -502,15 +498,585 @@
 					]
 				},
 				"url": {
-					"raw": "{{URL}}/vkma/groups/1/goals",
+					"raw": "{{URL}}/vkma/groups/2/goals",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
 						"vkma",
 						"groups",
-						"1",
+						"2",
 						"goals"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create goal",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Vk-Params",
+								"type": "text",
+								"value": "{{VK_PARAMS}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "color_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "checkins_count",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "desc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/vkma/groups/1/goals",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vkma",
+								"groups",
+								"1",
+								"goals"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.10"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.6"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Aug 2020 12:22:41 GMT"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"description\": \"desc\",\n        \"checkins_count\": 2\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "update goal",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Vk-Params",
+						"type": "text",
+						"value": "{{VK_PARAMS}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "color_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "checkins_count",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "desc2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/vkma/goals/2",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"vkma",
+						"goals",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create goal",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Vk-Params",
+								"type": "text",
+								"value": "{{VK_PARAMS}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "color_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "checkins_count",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "desc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/vkma/groups/1/goals",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vkma",
+								"groups",
+								"1",
+								"goals"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.10"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.6"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Aug 2020 12:22:41 GMT"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"description\": \"desc\",\n        \"checkins_count\": 2\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "delete goal",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Vk-Params",
+						"type": "text",
+						"value": "{{VK_PARAMS}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "color_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "checkins_count",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "desc2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/vkma/goals/2",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"vkma",
+						"goals",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "create goal",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Vk-Params",
+								"type": "text",
+								"value": "{{VK_PARAMS}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "color_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "checkins_count",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "desc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/vkma/groups/1/goals",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vkma",
+								"groups",
+								"1",
+								"goals"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.10"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.6"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 07 Aug 2020 12:22:41 GMT"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"description\": \"desc\",\n        \"checkins_count\": 2\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "attach goal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Vk-Params",
+						"type": "text",
+						"value": "{{VK_PARAMS}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "color_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "checkins_count",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "desc2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/vkma/goals/2/attach",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"vkma",
+						"goals",
+						"2",
+						"attach"
+					]
+				},
+				"description": "Добавить карту текущему пользователя на основе цели"
+			},
+			"response": [
+				{
+					"name": "attach goal",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Vk-Params",
+								"type": "text",
+								"value": "{{VK_PARAMS}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "color_id",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "checkins_count",
+									"value": "10",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "desc2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/vkma/goals/2/attach",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vkma",
+								"goals",
+								"2",
+								"attach"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.10"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.6"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Aug 2020 20:10:44 GMT"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"hash\": \"vDujxUY5vHtS9upm\",\n        \"total_count\": 10,\n        \"approved_count\": 0,\n        \"description\": \"desc\",\n        \"group\": {\n            \"id\": 1,\n            \"title\": \"Пiдор\",\n            \"avatar\": \"https://vk.com/images/community_200.png?ava=1\"\n        },\n        \"color\": {\n            \"id\": 2,\n            \"value\": \"linear-gradient(225deg, #FA646E 0%, #E6404B 100%)\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "index goals",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Vk-Params",
+						"type": "text",
+						"value": "{{VK_PARAMS}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "color_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "checkins_count",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "desc2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/vkma/goals/2",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"vkma",
+						"goals",
+						"2"
 					]
 				}
 			},
@@ -727,6 +1293,156 @@
 			]
 		},
 		{
+			"name": "catalog cards",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Vk-Params",
+						"type": "text",
+						"value": "{{VK_PARAMS}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "{{URL}}/vkma/goals?page[limit]=30&page[offset]=0&filter[category_id]=1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"vkma",
+						"goals"
+					],
+					"query": [
+						{
+							"key": "page[limit]",
+							"value": "30",
+							"description": "Лимит элементов"
+						},
+						{
+							"key": "page[offset]",
+							"value": "0",
+							"description": "Смещение "
+						},
+						{
+							"key": "filter[category_id]",
+							"value": "1",
+							"description": "Категория"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "catalog cards",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Vk-Params",
+								"type": "text",
+								"value": "{{VK_PARAMS}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{URL}}/vkma/goals?page[limit]=30&page[offset]=0&filter[category_id]=1",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vkma",
+								"goals"
+							],
+							"query": [
+								{
+									"key": "page[limit]",
+									"value": "30",
+									"description": "Лимит элементов"
+								},
+								{
+									"key": "page[offset]",
+									"value": "0",
+									"description": "Смещение "
+								},
+								{
+									"key": "filter[category_id]",
+									"value": "1",
+									"description": "Категория"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.10"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.6"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Aug 2020 20:10:10 GMT"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"description\": \"desc\",\n            \"checkins_count\": 10,\n            \"group\": {\n                \"id\": 1,\n                \"title\": \"Пiдор\",\n                \"avatar\": \"https://vk.com/images/community_200.png?ava=1\"\n            },\n            \"is_attached\": false\n        },\n        {\n            \"id\": 2,\n            \"description\": \"desc\",\n            \"checkins_count\": 10,\n            \"group\": {\n                \"id\": 1,\n                \"title\": \"Пiдор\",\n                \"avatar\": \"https://vk.com/images/community_200.png?ava=1\"\n            },\n            \"is_attached\": true\n        },\n        {\n            \"id\": 3,\n            \"description\": \"desc\",\n            \"checkins_count\": 10,\n            \"group\": {\n                \"id\": 1,\n                \"title\": \"Пiдор\",\n                \"avatar\": \"https://vk.com/images/community_200.png?ava=1\"\n            },\n            \"is_attached\": false\n        },\n        {\n            \"id\": 4,\n            \"description\": \"desc\",\n            \"checkins_count\": 10,\n            \"group\": {\n                \"id\": 1,\n                \"title\": \"Пiдор\",\n                \"avatar\": \"https://vk.com/images/community_200.png?ava=1\"\n            },\n            \"is_attached\": false\n        },\n        {\n            \"id\": 5,\n            \"description\": \"desc\",\n            \"checkins_count\": 10,\n            \"group\": {\n                \"id\": 1,\n                \"title\": \"Пiдор\",\n                \"avatar\": \"https://vk.com/images/community_200.png?ava=1\"\n            },\n            \"is_attached\": false\n        },\n        {\n            \"id\": 6,\n            \"description\": \"desc\",\n            \"checkins_count\": 10,\n            \"group\": {\n                \"id\": 1,\n                \"title\": \"Пiдор\",\n                \"avatar\": \"https://vk.com/images/community_200.png?ava=1\"\n            },\n            \"is_attached\": false\n        },\n        {\n            \"id\": 7,\n            \"description\": \"desc\",\n            \"checkins_count\": 10,\n            \"group\": {\n                \"id\": 1,\n                \"title\": \"Пiдор\",\n                \"avatar\": \"https://vk.com/images/community_200.png?ava=1\"\n            },\n            \"is_attached\": false\n        },\n        {\n            \"id\": 8,\n            \"description\": \"desc\",\n            \"checkins_count\": 10,\n            \"group\": {\n                \"id\": 1,\n                \"title\": \"Пiдор\",\n                \"avatar\": \"https://vk.com/images/community_200.png?ava=1\"\n            },\n            \"is_attached\": false\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://vk-loyalty-back.test/vkma/goals?limit=30&offset=0&page%5Boffset%5D=0\",\n        \"last\": \"http://vk-loyalty-back.test/vkma/goals?limit=30&offset=0&page%5Boffset%5D=0\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"offset\": 0,\n        \"limit\": 30,\n        \"prev\": null,\n        \"next\": null,\n        \"total\": 8\n    }\n}"
+				}
+			]
+		},
+		{
 			"name": "list of group cards",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -750,14 +1466,14 @@
 					"urlencoded": []
 				},
 				"url": {
-					"raw": "{{URL}}/vkma/groups/1/cards",
+					"raw": "{{URL}}/vkma/groups/2/cards",
 					"host": [
 						"{{URL}}"
 					],
 					"path": [
 						"vkma",
 						"groups",
-						"1",
+						"2",
 						"cards"
 					]
 				}
@@ -1090,6 +1806,117 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"data\": {\n        \"id\": 5,\n        \"hash\": \"zakYwtFEy61LT2T1\",\n        \"total_count\": 2,\n        \"approved_count\": 1,\n        \"group\": {\n            \"id\": 1,\n            \"title\": \"ВКонтакте API\",\n            \"avatar\": \"https://sun9-19.userapi.com/c638629/v638629852/2afc0/_QdFMmxSRyY.jpg?ava=1\"\n        },\n        \"color\": {\n            \"id\": 1,\n            \"value\": \"#000\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "delete card",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Vk-Params",
+						"type": "text",
+						"value": "{{VK_PARAMS}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "hash",
+							"value": "zQKeYlkwHbCv7RFH",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{URL}}/vkma/cards/2",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"vkma",
+						"cards",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "delete card",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Vk-Params",
+								"type": "text",
+								"value": "{{VK_PARAMS}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "hash",
+									"value": "zQKeYlkwHbCv7RFH",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/vkma/cards/2",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"vkma",
+								"cards",
+								"2"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.17.10"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.4.6"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 18 Aug 2020 20:18:55 GMT"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": null
 				}
 			]
 		},

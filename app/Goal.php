@@ -69,4 +69,9 @@ class Goal extends Model
     {
         return $this->belongsTo(Color::class);
     }
+
+    public function getWsRoomKey(): string
+    {
+        return 'goal.' . $this->id;
+    }
 }

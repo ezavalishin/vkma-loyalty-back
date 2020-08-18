@@ -157,4 +157,9 @@ class Card extends Model
     {
         return $this->goal->description;
     }
+
+    public function getWsRoomKey(): string
+    {
+        return 'card.' . $this->id;
+    }
 }
