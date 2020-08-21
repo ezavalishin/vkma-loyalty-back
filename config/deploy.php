@@ -63,6 +63,7 @@ return [
         // Deployment is done and live
         'done' => [
             'fpm:reload',
+            'artisan:swoole:reload'
         ],
 
         // Deployment succeeded.
@@ -143,7 +144,7 @@ return [
     */
 
     'include' => [
-        //
+        'recipe/swoole_recipe.php'
     ],
 
     /*
