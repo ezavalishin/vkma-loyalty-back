@@ -70,7 +70,6 @@ class VkAppGuard
 
         Validator::make($params, [
             'vk_user_id' => 'required|integer',
-            'utc_offset' => 'required|integer',
             'vk_are_notifications_enabled' => 'required|boolean',
             'sign' => 'required|string'
         ])->validate();
