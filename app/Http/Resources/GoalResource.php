@@ -21,6 +21,8 @@ class GoalResource extends JsonResource {
             'description' => $this->description,
             'checkins_count' => $this->checkins_count,
             'group' => new GroupResource($this->whenLoaded('group')),
+            'color' => new ColorResource($this->whenLoaded('color')),
+            'category' => new CategoryResource($this->whenLoaded('category')),
             'is_attached' => $this->getAttribute('is_attached')
         ];
     }

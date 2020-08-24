@@ -83,6 +83,11 @@ class Group extends Model
         return $this->hasMany(Goal::class);
     }
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
+    }
+
     public function addOwner(User $user): Group
     {
         if ($this->owners()->where('users.id', $user->id)->exists()) {

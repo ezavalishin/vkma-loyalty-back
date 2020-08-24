@@ -55,6 +55,18 @@ class Goal extends Model
         'checkins_count' => 'integer'
     ];
 
+    protected $with = [
+        'color',
+        'group.category'
+    ];
+
+    protected static function booted()
+    {
+        static::retrieved(function (Goal $goal) {
+            $goal->setRelation('category', $goal->group->category);
+        });
+    }
+
     public function cards(): HasMany
     {
         return $this->hasMany(Card::class);

@@ -223,4 +223,23 @@ class GroupController extends Controller
 
         return new Response(null, 204);
     }
+
+    public function destroy(int $id): Response
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            abort(401);
+        }
+
+        $group = Group::query()->findOrFail($id);
+
+        if ($user->cannot('update', $group)) {
+            abort(403);
+        }
+
+        $group->delete();
+
+        return new Response(null, 204);
+    }
 }
