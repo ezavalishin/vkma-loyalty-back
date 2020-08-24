@@ -28,6 +28,7 @@ $router->group([
     'prefix' => 'groups'
 ], static function () use ($router) {
     $router->post('/', 'GroupController@store');
+    $router->delete('/{id:[0-9]+}', 'GroupController@destroy');
 
     $router->post('/{id:[0-9]+}/goals', 'GroupController@storeGoal');
     $router->get('/{id:[0-9]+}/goals', 'GroupController@indexGoals');
