@@ -43,6 +43,7 @@ use Illuminate\Support\Carbon;
  * @property-read \App\City|null $city
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Goal[] $goals
  * @property-read int|null $goals_count
+ * @property-read \App\Category|null $category
  */
 class Group extends Model
 {

@@ -13,6 +13,7 @@
         "laravel/lumen-framework": "^7.0",
         "league/flysystem": "^1.0",
         "lorisleiva/laravel-deployer": "^0.3.2",
+        "staudenmeir/belongs-to-through": "^2.5",
         "swooletw/laravel-swoole": "^2.6",
         "vkcom/vk-php-sdk": "^5.101"
     },

@@ -43,6 +43,8 @@ use Laravel\Lumen\Auth\Authorizable;
  * @method static Builder|User whereVisitedAt($value)
  * @property-read Collection|Card[] $cards
  * @property-read int|null $cards_count
+ * @property-read Collection|\App\Group[] $groupsAsOwner
+ * @property-read int|null $groups_as_owner_count
  */
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {

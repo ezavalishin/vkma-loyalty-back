@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
+use Znck\Eloquent\Traits\BelongsToThrough;
 
 
 /**
@@ -35,10 +36,11 @@ use Illuminate\Support\Carbon;
  * @property-read Collection|Card[] $cards
  * @property-read int|null $cards_count
  * @property-read Group $group
- * @property-read \App\Color $color
+ * @property-read Color $color
  */
 class Goal extends Model
 {
+    use BelongsToThrough;
     /**
      * The attributes that are mass assignable.
      *
@@ -57,14 +59,14 @@ class Goal extends Model
 
     protected $with = [
         'color',
-        'group.category'
+        'group',
+        'category'
     ];
 
-    protected static function booted()
+
+    public function category(): \Znck\Eloquent\Relations\BelongsToThrough
     {
-        static::retrieved(function (Goal $goal) {
-            $goal->setRelation('category', $goal->group->category);
-        });
+        return $this->belongsToThrough(Category::class, Group::class);
     }
 
     public function cards(): HasMany
