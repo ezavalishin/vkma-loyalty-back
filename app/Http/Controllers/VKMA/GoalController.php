@@ -124,6 +124,8 @@ class GoalController extends Controller
             $group->save();
         }
 
+        $goal->refresh();
+
         return new GoalResource($goal);
     }
 
