@@ -28,6 +28,6 @@ class FillUser
      */
     public function handle(UserCreated $event)
     {
-        dispatch(new FillUserInfo($event->user));
+        dispatch_now(new FillUserInfo($event->user));
     }
 }
