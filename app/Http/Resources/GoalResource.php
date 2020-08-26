@@ -23,7 +23,7 @@ class GoalResource extends JsonResource {
             'group' => new GroupResource($this->whenLoaded('group')),
             'color' => new ColorResource($this->whenLoaded('color')),
             'category' => new CategoryResource($this->whenLoaded('category')),
-            'is_attached' => $this->getAttribute('is_attached')
+            'is_attached' => $this->getAttribute('is_attached') ?? false
         ];
     }
 }

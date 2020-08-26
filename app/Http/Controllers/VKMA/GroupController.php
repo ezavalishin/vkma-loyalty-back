@@ -106,7 +106,7 @@ class GroupController extends Controller
         $group->category_id = $request->input('category_id');
         $group->save();
 
-        $goal->refresh();
+        $goal->load(['color', 'category', 'group']);
 
         return new GoalResource($goal);
     }
